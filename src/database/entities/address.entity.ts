@@ -22,9 +22,9 @@ export class Address {
   @Column()
   country: string;
 
-  @Column({ default: 'home' ,enum:['home','office']})
-  type: string;
+  @Column({ default: 'shipping' })
+  type: string; // e.g., 'shipping', 'billing'
 
-  @Column()
-  userId:string
+  @ManyToOne(() => User, (user) => user.addresses)
+  user: User;
 }
